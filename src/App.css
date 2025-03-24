@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+body {
+    font-family: "Work Sans", sans-serif;
+}
+.how-it-work-card:hover .how-it-work-icon {
+  filter: brightness(0) invert(0);
+}
+@keyframes infinite-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  .animate-infinite-scroll {
+    animation: infinite-scroll 30s linear infinite;
+  }
