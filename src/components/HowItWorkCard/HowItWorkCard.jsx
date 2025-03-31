@@ -2,27 +2,27 @@ import React from "react";
 import HowItWorkIcon1 from "../../assets/Vector.svg";
 import HowItWorkIcon3 from "../../assets/vector1.svg";
 import HowItWorkIcon2 from "../../assets/vector2.svg";
+import { useTranslation } from "react-i18next";
 
 export default function HowItWorkCard() {
+    const { t, i18n } = useTranslation();
+  
   const process = [
     {
       imgSrc: HowItWorkIcon1,
-      title: "Discovery",
+      title: t("HowItWorksCard1Header"),
       description:
-        "We thoroughly analyze your business goals, audience, and challenges to gain insights and create a tailored strategy that aligns with your vision.",
-    },
+        t("HowItWorksCard1Desc"),},
     {
       imgSrc: HowItWorkIcon2,
-      title: "Plan",
+      title: t("HowItWorksCard2Header"),
       description:
-        "We develop a strategic roadmap based on our insights, outlining clear objectives, actionable steps, and timelines to achieve your goals effectively.",
-    },
+        t("HowItWorksCard2Desc"),},
     {
       imgSrc: HowItWorkIcon3,
-      title: "Execute",
+      title: t("HowItWorksCard3Header"),
       description:
-        "We implement the strategy with precision, managing each detail to ensure smooth execution and achieve the desired results.",
-    },
+        t("HowItWorksCard3Desc"),},
   ];
 
   return (

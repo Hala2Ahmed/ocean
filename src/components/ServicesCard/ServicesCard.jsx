@@ -5,44 +5,47 @@ import motionIcon from "../../assets/video-camera.svg";
 import architectureIcon from "../../assets/swatches.svg";
 import applicationIcon from "../../assets/Group 97.svg";
 import digitalIcon from "../../assets/Vector.svg";
+import { useTranslation } from "react-i18next";
 
 export default function ServicesCard() {
+  const { t, i18n } = useTranslation();
+
   const services = [
     {
       imgSrc: graphicIcon,
-      title: "Graphic Design",
+      title: t("serviceHomeCard1Header"),
       description:
-        "We specialize in creating impactful social media designs and unique branding to elevate your presence.",
+        t("serviceHomeCard1Desc"),
     },
     {
       imgSrc: codeIcon,
-      title: "Website",
+      title: t("serviceHomeCard2Header"),
       description:
-        "We build dynamic, custom websites with the latest technologies to ensure high performance.",
+        t("serviceHomeCard2Desc"),
     },
     {
       imgSrc: applicationIcon,
-      title: "Applications",
+      title: t("serviceHomeCard3Header"),
       description:
-        "We develop effective, seamless applications, delivering the project fully ready for immediate deployment.",
+        t("serviceHomeCard3Desc"),
     },
     {
       imgSrc: motionIcon,
-      title: "Motion Graphics",
+      title: t("serviceHomeCard4Header"),
       description:
-        "We create captivating motion graphics that bring your ideas to life with creativity.",
+        t("serviceHomeCard4Desc"),
     },
     {
       imgSrc: digitalIcon,
-      title: "Digital Marketing",
+      title: t("serviceHomeCard5Header"),
       description:
-        "We provide effective digital marketing strategies to enhance your reach and achieve goals.",
+        t("serviceHomeCard5Desc"),
     },
     {
       imgSrc: architectureIcon,
-      title: "Architecture",
+      title: t("serviceHomeCard6Header"),
       description:
-        "We deliver meticulous architectural designs, providing blueprints and resources to ensure professional execution.",
+        t("serviceHomeCard6Desc"),
     },
   ];
 
