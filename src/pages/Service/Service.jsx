@@ -8,6 +8,7 @@ import service6 from "../../assets/service6.png";
 import serviceIcon from "../../assets/serviceIcon.svg";
 import PreFooter from "../../components/PreFooter/PreFooter";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 export default function Service() {
     const { t, i18n } = useTranslation();
   
@@ -71,7 +72,8 @@ export default function Service() {
                 key={index}
                 className="rounded-[10px] flex flex-col bg-[#0d0d0d]"
               >
-                <img
+              <Link to="/blog">
+              <img
                   src={card.image}
                   className="w-full rounded-[5px]"
                   alt={card.head}
@@ -98,6 +100,7 @@ export default function Service() {
                     </div>
                   </div>
                 </div>
+                </Link>
               </div>
             ))}
           </div>
