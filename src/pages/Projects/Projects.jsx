@@ -10,7 +10,7 @@ export default function Projects() {
 
   return (
     <>
-      <div className="bg-secondBackground lg:pt-[116px] lg:px-[152px] lg:pb-[180px] px-[20px] py-[50px] overflow-hidden">
+      <div className="bg-secondBackground lg:pt-[250px] pt-[200px] lg:px-[152px] lg:pb-[180px] px-[20px] pb-[50px] overflow-hidden">
         <div className="text-center">
           <span className="text-[#00fcdb] text-sm md:text-base font-semibold">
             {t("project")}{" "}

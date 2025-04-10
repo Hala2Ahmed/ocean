@@ -27,7 +27,7 @@ export default function BlogCard() {
       <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6">
         {cards.map((card, index) => (
           <div key={index} className="rounded-[10px] flex flex-col bg-primary">
-            <Link to="/blog">
+            <Link to="/blogDetails">
             <img src={card.image} className="w-full mb-[74px] rounded-t-[10px]" alt={card.title} />
             <div>
               <div className="mb-[37px] ms-[28px]">

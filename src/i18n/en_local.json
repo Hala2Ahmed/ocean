@@ -169,5 +169,8 @@
   "Email": "Email",
   "PhoneNumber": "Phone Number",
   "Message": "Message",
-  "submitForm": "Send Message"
+  "submitForm": "Send Message",
+
+  "NotFound": "Get exclusive promotions & updates straight to your inbox.",
+  "NotFoundBotton": "Back to Homepage"
 }

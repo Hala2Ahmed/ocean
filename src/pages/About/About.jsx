@@ -9,7 +9,7 @@ export default function About() {
   const { t, i18n } = useTranslation();
 
   return (
-    <div className="bg-secondBackground text-white overflow-hidden">
+    <div className="bg-secondBackground text-white overflow-hidden pt-[130px]">
       <div className="flex items-center lg:flex-row flex-col lg:pt-[142px] lg:pb-[181px] pt-[36px] pb-[36px] lg:px-[140px] px-[36px] gap-4">
         <div className="relative">
           <img className="w-full" src={about1} alt="" />

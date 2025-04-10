@@ -18,8 +18,8 @@ function App() {
    { path: 'contact',element: <Contact />},
    { path: '*',element: <Notfound />},
    { path: 'projects',element: <Projects />},
-   { path: 'service',element: <Service />},
-   { path: 'blog',element: <Blog />},
+   { path: 'blog',element: <Service />},
+   { path: 'blogDetails',element: <Blog />},
    { path: 'HowItWork',element: <HowItWork />},
   ]}
   ])

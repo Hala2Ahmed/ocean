@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 export default function Contact() {
   const { t, i18n } = useTranslation();
   return (
-    <div className="bg-secondBackground text-white overflow-hidden">
+    <div className="bg-secondBackground text-white overflow-hidden pt-[130px]">
       <div className="text-center lg:pt-[116px] pt-[36px]">
         <span className="text-[51px] font-semibold leading-[1.1]">
           {t("contact")}

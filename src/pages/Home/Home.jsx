@@ -49,7 +49,7 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <div className="text-[#ffffff] bg-primary overflow-hidden">
+      <div className="text-[#ffffff] bg-primary overflow-hidden pt-[150px]">
         <div className="px-7 md:px-[85px] pb-[69px] lg:pl-[146px] grid grid-cols-1 lg:grid-cols-2 gap-8 justify-center items-center">
           <div className="order-2 lg:order-1 pt-[65px] lg:pr-[77px]">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[67px] font-semibold leading-[1.1] capitalize">

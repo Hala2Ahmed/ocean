@@ -55,7 +55,7 @@ export default function Service() {
 
   return (
     <>
-      <div className="bg-secondBackground text-[#ffffff] overflow-hidden">
+      <div className="bg-secondBackground text-[#ffffff] overflow-hidden pt-[130px]">
         <div className="text-center lg:pt-[116px] pt-[36px]">
           <span className="text-[#00fcdb] text-sm md:text-base font-semibold">
             {t("service")}
@@ -72,7 +72,7 @@ export default function Service() {
                 key={index}
                 className="rounded-[10px] flex flex-col bg-[#0d0d0d]"
               >
-              <Link to="/blog">
+              <Link to="/blogDetails">
               <img
                   src={card.image}
                   className="w-full rounded-[5px]"

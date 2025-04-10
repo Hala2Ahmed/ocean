@@ -40,7 +40,6 @@ export default function Navbar() {
       document.documentElement.lang = newLang;
       document.dir = newLang === 'ar' ? 'rtl' : 'ltr';
     }).catch(() => {
-      console.warn('Font loading failed, but changing language anyway');
       i18n.changeLanguage(newLang);
       document.documentElement.lang = newLang;
       document.dir = newLang === 'ar' ? 'rtl' : 'ltr';
@@ -59,8 +58,8 @@ export default function Navbar() {
     if (location.pathname === "/") {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: "smooth" });
-      // إزالة الـ hash من الـ URL إذا كان موجودًا
       window.history.pushState(null, null, " ");
+      navigate("/", { replace: true });
     }
   };
 
@@ -71,19 +70,20 @@ export default function Navbar() {
       if (servicesSection) {
         servicesSection.scrollIntoView({ behavior: "smooth" });
       }
-      // تحديث الـ hash في الـ URL
-      window.history.pushState(null, null, "#services");
+      window.location.hash = "services";
+    } else {
+      navigate("/#services");
     }
   };
 
   return (
     <nav
-      className={`bg-secondBackground sticky top-0 z-50 w-full transition-all duration-700 ease-in-out ${
-        isScrolled ? "py-[32px]" : "py-[42px]"
+      className={`bg-secondBackground fixed top-0 z-50 w-full transition-all duration-700 ease-in-out ${
+        isScrolled ? "py-[32px]" : "py-[46px]"
       }`}
     >
       <div
-        className={`px-7 lg:pr-[125px] lg:pl-[125px] mx-auto max-w-screen-xl ${
+        className={`px-7 md:px-[115px] mx-auto max-w-screen-xl ${
           isScrolled ? "" : ""
         }`}
       >
@@ -215,7 +215,7 @@ export default function Navbar() {
               </li>
               <li>
                 <NavLink
-                  to="/service"
+                  to="/blog"
                   className={({ isActive }) =>
                     `block py-2 pl-3 pr-4 border-b border-gray-500 lg:border-0 lg:p-0 ${
                       isActive ? "text-blue" : "text-white"

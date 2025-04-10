@@ -10,8 +10,8 @@ import { useTranslation } from "react-i18next";
 export default function Blog() {
   const { t, i18n } = useTranslation();
   return (
-    <div className=" bg-secondBackground text-[#ffffff] overflow-hidden">
-      <img src={blog} className="object-contain p-[10px_0_64px]" alt="" />
+    <div className=" bg-secondBackground text-[#ffffff] overflow-hidden pt-[150px]">
+      <img src={blog} className="w-full p-[10px_0_64px]" alt="" />
 
       <div className="lg:p-[0_231px_163px_144px] p-[0_50px_64px_50px]">
         <h2 className="md:text-[51px] text-4xl font-semibold">{t("blog")}</h2>

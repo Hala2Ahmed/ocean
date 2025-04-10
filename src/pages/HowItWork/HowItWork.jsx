@@ -29,8 +29,8 @@ export default function HowItWork() {
   ];
 
   return (
-    <div className="bg-secondBackground text-white overflow-hidden">
-      <div className="text-center lg:pt-[116px] pt-[36px]">
+    <div className="bg-secondBackground text-white overflow-hidden pt-[130px]">
+      <div className="text-center lg:pt-[116px] pt-[36px] px-[20px]">
         <span className="text-[#00fcdb] text-sm md:text-base font-semibold">
           {t("howItWorks")}
         </span>
