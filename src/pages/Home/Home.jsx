@@ -51,12 +51,12 @@ export default function Home() {
       {/* Hero Section */}
       <div className="text-[#ffffff] bg-primary overflow-hidden pt-[150px]">
         <div className="px-7 md:px-[85px] pb-[69px] lg:pl-[146px] grid grid-cols-1 lg:grid-cols-2 gap-8 justify-center items-center">
-          <div className="order-2 lg:order-1 pt-[65px] lg:pr-[77px]">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[67px] font-semibold leading-[1.1] capitalize">
+          <div className="order-2 lg:order-1 sm:pt-[65px] xl:pt-[40px] lg:pr-[77px]">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[67px] xl:text-[76px]  font-semibold leading-[1.1] capitalize">
             {t("hero")}
               <span className="text-secondBlue"> {t("heroSpan")}</span>
             </h1>
-            <p className="text-base sm:text-lg md:text-xl lg:text-[22px] font-normal leading-[1.6] pt-5 pb-[30px]">
+            <p className="text-base sm:text-lg md:text-xl lg:text-[22px] font-normal leading-[1.6] pt-5 pb-[30px] xl:pb-[20px]">
             {t("heroDesc")}
             </p>
             <button to="/contact" className="rounded-[20px] bg-secondBlue flex items-center gap-3 py-3 px-6 md:py-[20px] md:px-[50px]">
@@ -66,13 +66,13 @@ export default function Home() {
               <Link to="/contact">{t("heroButton")}</Link>
             </button>
           </div>
-          <div className="order-1 lg:order-2 flex flex-col justify-center items-center md:justify-end ">
+          <div className="order-1 lg:order-2 flex flex-col justify-center items-center ">
             <img
               src={heroGif}
-              className="w-full max-w-[400px] md:max-w-none spin-slow"
+              className="w-full max-w-[400px] md:max-w-none spin-slow xl:-mb-[90px] xl:-mt-[50px]"
               alt="Landing Animation"
             />
-            <div className="grid grid-cols-3 gap-3.5 justify-center items-center text-center">
+            <div className="grid grid-cols-3 gap-2 justify-center items-center text-center">
               <div>
                 <h4 className="text-secondBlue font-bold text-[28px] font-secondaryFont">
                   <CountUp end={300} duration={3} />+
@@ -108,7 +108,7 @@ export default function Home() {
 
       {/* About Section */}
       <div className="bg-primary text-[#ffffff] pt-[50px] pb-[104px] px-7 md:px-[113px] overflow-hidden">
-        <div className="flex flex-col md:flex-row gap-8 justify-between items-center">
+        <div className="flex flex-col md:flex-row gap-6 justify-between items-center">
           <div className="flex-1 mx-auto">
             <img data-aos="fade-up" data-aos-delay="200" src={aboutImg} alt="About Us" />
           </div>
