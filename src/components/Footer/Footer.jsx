@@ -1,12 +1,26 @@
-import React from "react";
 import logo from "../../assets/Group 2 2.svg";
 import yutubeIcon from "../../assets/Vector (Stroke).svg";
 import TwitterLogo from "../../assets/TwitterLogo.svg";
 import InstagramLogo from "../../assets/InstagramLogo.svg";
 import { useTranslation } from "react-i18next";
+import useNewsletterForm from "../../CustomHook/JoinOurWeekly";
+import { useHomeData } from "../../CustomHook/HomeSocialLink";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   const { t, i18n } = useTranslation();
+  const { isLoading, errorMsg, formik } = useNewsletterForm();
+  const { data } = useHomeData();
+  const instagram = data?.data?.general_settings?.find(
+    (item) => item.key_id === "instagram"
+  )?.value;
+  const twitter = data?.data?.general_settings?.find(
+    (item) => item.key_id === "twitter"
+  )?.value;
+  const youtube = data?.data?.general_settings?.find(
+    (item) => item.key_id === "youtube"
+  )?.value;
+
   return (
     <footer className="bg-primary text-white">
       <div className="lg:px-[212px] px-[40px] pt-[40px]">
@@ -18,15 +32,40 @@ export default function Footer() {
             </p>
             <p className="max-w-[238px] text-[#CCCCCC]">{t("footerHeader")}</p>
             <div className="flex gap-4 pt-[15px] pb-[30px]">
-              <i>
-                <img src={yutubeIcon} alt="yutube Icon" />
-              </i>
-              <i>
-                <img src={TwitterLogo} alt="Twitter Icon" />
-              </i>
-              <i>
-                <img src={InstagramLogo} alt="Instagram Icon" />
-              </i>
+              {youtube && (
+                <a
+                  href={youtube}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-all duration-200 hover:scale-95 hover:drop-shadow-md cursor-pointer"
+                >
+                  <img src={yutubeIcon} alt="youtube Icon" />
+                </a>
+              )}
+              {twitter && (
+                <a
+                  href={twitter}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-all duration-200 hover:scale-95 cursor-pointer"
+                >
+                  <img
+                    src={TwitterLogo}
+                    alt="Twitter Icon"
+                    className="hover:shadow-lg"
+                  />
+                </a>
+              )}
+              {instagram && (
+                <a
+                  href={instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-all duration-200 hover:scale-95 hover:drop-shadow-md cursor-pointer"
+                >
+                  <img src={InstagramLogo} alt="Instagram Icon" />
+                </a>
+              )}
             </div>
           </div>
           <div className="sm:col-span-1 md:mx-auto">
@@ -34,37 +73,44 @@ export default function Footer() {
               {t("footerExplore")}
             </p>
             <div className="flex flex-col items-start ">
-              <p className="">{t("footerProjects")}</p>
-              <p className="pt-[20px] pb-[20px]">{t("footerWorks")}</p>
-              <p className="">{t("footerContact")}</p>
+              <Link to="/projects" className="hover:text-blue duration-300">{t("footerProjects")}</Link>
+              <Link to="/HowItWork" className="pt-[20px] pb-[20px] hover:text-blue duration-300">{t("footerWorks")}</Link>
+              <Link to="/contact" className="hover:text-blue duration-300">{t("footerContact")}</Link>
             </div>
           </div>
           <div className="sm:col-span-2">
-            {/* <p className="max-w-[467px]">
-              Get exclusive promotions & updates straight to your inbox.
-            </p> */}
             <h3 className="font-semibold text-[35px] max-w-[432px]">
               {t("footerContactHeader")}
             </h3>
             <p className="text-[#CCCCCC] pt-[14px] pb-[20px]">
               {t("footerContactHeader1")}
             </p>
-            <div className="relative flex items-center justify-between">
+            <form
+              onSubmit={formik.handleSubmit}
+              className="relative flex items-center justify-between"
+            >
               <input
-                type="text"
+                required
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.errors.email}
+                type="email"
                 name="email"
                 className="md:py-[16px] px-4 py-4 md:px-5 md:pl-5 border bg-white rounded-[20px] text-lg text-gray-900 placeholder:py-[19px] placeholder:text-[#000000] focus:outline-none flex-1 w-full"
                 placeholder={t("footerInput")}
               />
               <button
+                disabled={isLoading}
                 type="submit"
                 className={`absolute ${
                   i18n.language === "ar" ? "left-0" : "right-0"
-                } px-4 py-5 md:py-[19px] md:px-[50px] bg-blue shadow-md rounded-[20px] text-white font-semibold`}
+                } px-4 py-5 md:py-[19px] md:px-[50px] cursor-pointer bg-blue shadow-md rounded-[20px] text-white font-semibold hover:bg-blue/88 duration-300`}
               >
                 {t("footerButton")}
               </button>
-            </div>
+              {errorMsg && <div className="text-red-600">{errorMsg}</div>}
+            </form>
           </div>
         </div>
         <hr className=" border-gray-200 mt-[30px]" />

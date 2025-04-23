@@ -9,9 +9,40 @@ import serviceIcon from "../../assets/serviceIcon.svg";
 import PreFooter from "../../components/PreFooter/PreFooter";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
+import Loading from "../../components/Loading/Loading";
+// async function fetchBlogData(lang) {
+//   try {
+//     const response = await axios.get("https://dashboard.ocean-it.net/api/blogs", {
+//       headers: { 'lang': lang },
+//       params: {
+//         page: 1,
+//         size: 6,
+//         tag_title: 'seo'
+//       }
+//     });
+//     console.log("API Response:", response.data); // تأكد من وجود البيانات
+//     return response.data;
+//   } catch (error) {
+//     console.error("API Error:", error.response?.data || error.message); // سجل الخطأ بالكامل
+//     throw new Error('Failed to fetch data');
+//   }
+// }
 export default function Service() {
     const { t, i18n } = useTranslation();
+  //   const { data, isLoading, isError } = useQuery({
+  //     queryKey: ['blogData', i18n.language],
+  //     queryFn: () => fetchBlogData(i18n.language === 'ar' ? 'ar' : 'en'),
+  //     // staleTime: 5 * 60 * 1000, // 5 minutes cache
+  //   });
+  // // console.log(data);
   
+  //   if (isLoading) {
+  //     return (
+  //      <Loading />
+  //     );
+  //   }
   const cards = [
     {
       image: service1,
@@ -77,6 +108,7 @@ export default function Service() {
                   src={card.image}
                   className="w-full rounded-[5px]"
                   alt={card.head}
+                  loading="lazy"
                 />
                 <div>
                   <div className="pt-[33px]">
@@ -104,8 +136,8 @@ export default function Service() {
               </div>
             ))}
           </div>
-          <div className="flex justify-center mt-[99.5px] pb-[51px] w-full ">
-            <button className="font-semibold bg-[#ffffff19] p-[15px_75.4px_20.2px_55px]">
+          <div className="flex justify-center mt-[99.5px] pb-[51px] w-full">
+            <button className="font-semibold bg-[#ffffff19] p-[15px_75.4px_20.2px_55px] cursor-pointer">
               {t("serviceButton")}
             </button>
           </div>{" "}

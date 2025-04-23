@@ -17,19 +17,20 @@ const PortfolioCard = ({ image }) => {
 };
 
 export default function PortfoliosCard({ customImages = [], showAll = false }) {
-      const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const defaultImages = [
     Portfolios1,
     Portfolios2,
     Portfolios3,
     Portfolios4,
     Portfolios3,
-    Portfolios5
+    Portfolios5,
   ];
 
-  const portfolioImages = customImages.length > 0 
-    ? [...defaultImages, ...customImages] 
-    : defaultImages;
+  const portfolioImages =
+    customImages.length > 0
+      ? [...defaultImages, ...customImages]
+      : defaultImages;
 
   const imagesToShow = showAll ? portfolioImages : portfolioImages.slice(0, 6);
 
@@ -40,16 +41,16 @@ export default function PortfoliosCard({ customImages = [], showAll = false }) {
           {t("projectTab1")}
         </div>
         <div className="px-2 hover:border-b-2 hover:border-blue hover:text-blue transition-all duration-300">
-        {t("projectTab2")}
+          {t("projectTab2")}
         </div>
         <div className="px-2 hover:border-b-2 hover:border-blue hover:text-blue transition-all duration-300">
-        {t("projectTab3")}
+          {t("projectTab3")}
         </div>
         <div className="px-2 hover:border-b-2 hover:border-blue hover:text-blue transition-all duration-300">
-        {t("projectTab4")}
+          {t("projectTab4")}
         </div>
         <div className="px-2 hover:border-b-2 hover:border-blue hover:text-blue transition-all duration-300">
-        {t("projectTab5")}
+          {t("projectTab5")}
         </div>
       </div>
 

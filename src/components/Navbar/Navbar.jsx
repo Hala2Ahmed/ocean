@@ -83,7 +83,7 @@ export default function Navbar() {
       }`}
     >
       <div
-        className={`px-7 md:px-[115px] mx-auto max-w-screen-xl ${
+        className={`px-7 md:px-[70px] mx-auto max-w-screen-xl ${
           isScrolled ? "" : ""
         }`}
       >
@@ -93,14 +93,12 @@ export default function Navbar() {
           </NavLink>
 
           <div className="flex items-center lg:order-2">
-            <div className="hidden md:block">
-              <button className="bg-blue font-bold text-[18px] px-[20px] py-[14px] rounded-full text-white">
-                <NavLink to="/contact">{t("navbarButton")}</NavLink>
-              </button>
-            </div>
+              <NavLink to="/contact" className="bg-blue hidden md:block font-bold text-[18px] px-[20px] py-[14px] rounded-full text-white hover:bg-blue/90 duration-300">
+                {t("navbarButton")}
+              </NavLink>
             <button
               onClick={changeLanguage}
-              className="font-bold text-[18px] px-[20px] py-[14px] rounded-full text-white cursor-pointer"
+              className="font-bold mx-2 text-[18px] border-2 border-transparent  hover:border-blue shadow-lg text-white  duration-300 px-[30px] py-[14px] rounded-[50px] cursor-pointer hover:bg-transparent"
             >
               {i18n.language === "ar" ? "En" : "Ar"}
             </button>
@@ -108,7 +106,7 @@ export default function Navbar() {
             <button
               onClick={toggleMenu}
               type="button"
-              className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden focus:outline-none focus:ring-2 focus:ring-gray-200"
+              className="inline-flex cursor-pointer items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden focus:outline-none focus:ring-2 focus:ring-gray-200"
               aria-controls="mobile-menu-2"
               aria-expanded={isMenuOpen}
             >
@@ -156,7 +154,7 @@ export default function Navbar() {
                   end
                   onClick={handleHomeClick}
                   className={() =>
-                    `block py-2 pl-3 pr-4 lg:border-0 border-b border-gray-500 rounded lg:p-0 ${
+                    `block py-2 pl-3 pr-4 lg:border-0 border-b border-gray-500 rounded lg:p-0 hover:text-blue transition-all duration-300 ${
                       isHomeActive() ? "text-blue" : "text-white"
                     }`
                   }
@@ -169,7 +167,7 @@ export default function Navbar() {
                   to="/#services"
                   onClick={handleServicesClick}
                   className={() =>
-                    `block py-2 pl-3 pr-4 border-b border-gray-500 lg:border-0 lg:p-0 ${
+                    `block py-2 pl-3 pr-4 border-b border-gray-500 lg:border-0 lg:p-0 hover:text-blue transition-all duration-300 ${
                       isServicesActive() ? "text-blue" : "text-white"
                     }`
                   }
@@ -181,7 +179,7 @@ export default function Navbar() {
                 <NavLink
                   to="/projects"
                   className={({ isActive }) =>
-                    `block py-2 pl-3 pr-4 border-b border-gray-500 lg:border-0 lg:p-0 ${
+                    `block py-2 pl-3 pr-4 border-b border-gray-500 lg:border-0 lg:p-0 hover:text-blue transition-all duration-300 ${
                       isActive ? "text-blue" : "text-white"
                     }`
                   }
@@ -193,7 +191,7 @@ export default function Navbar() {
                 <NavLink
                   to="/about"
                   className={({ isActive }) =>
-                    `block py-2 pl-3 pr-4 border-b border-gray-500 lg:border-0 lg:p-0 ${
+                    `block py-2 pl-3 pr-4 border-b border-gray-500 lg:border-0 lg:p-0 hover:text-blue transition-all duration-300 ${
                       isActive ? "text-blue" : "text-white"
                     }`
                   }
@@ -205,7 +203,7 @@ export default function Navbar() {
                 <NavLink
                   to="/HowItWork"
                   className={({ isActive }) =>
-                    `block py-2 pl-3 pr-4 border-b border-gray-500 lg:border-0 lg:p-0 ${
+                    `block py-2 pl-3 pr-4 border-b border-gray-500 lg:border-0 lg:p-0 hover:text-blue transition-all duration-300 ${
                       isActive ? "text-blue" : "text-white"
                     }`
                   }
@@ -217,7 +215,7 @@ export default function Navbar() {
                 <NavLink
                   to="/blog"
                   className={({ isActive }) =>
-                    `block py-2 pl-3 pr-4 border-b border-gray-500 lg:border-0 lg:p-0 ${
+                    `block py-2 pl-3 pr-4 border-b border-gray-500 lg:border-0 lg:p-0 hover:text-blue transition-all duration-300 ${
                       isActive ? "text-blue" : "text-white"
                     }`
                   }

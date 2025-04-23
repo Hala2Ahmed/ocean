@@ -14,30 +14,30 @@ body:lang(ar) {
   filter: brightness(0) invert(0);
 }
 @keyframes infinite-scroll {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
+  from {
+    transform: translateX(0);
   }
-  
-  .animate-infinite-scroll {
-    animation: infinite-scroll 30s linear infinite;
+  to {
+    transform: translateX(-50%);
   }
-  
-  @keyframes infinite-scroll-rtl {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(50%);
-    }
-}
-[dir="rtl"] .animate-infinite-scroll {
-    animation-name: infinite-scroll-rtl;
 }
 
+@keyframes infinite-scroll-rtl {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(50%);
+  }
+}
+
+.animate-infinite-scroll {
+  animation: infinite-scroll 20s linear infinite;
+}
+
+[dir="rtl"] .animate-infinite-scroll {
+  animation: infinite-scroll-rtl 20s linear infinite;
+}
 @keyframes ping-small {
   75%, 100% {
     transform: scale(1.4);
