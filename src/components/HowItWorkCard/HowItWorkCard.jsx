@@ -11,7 +11,7 @@ export default function HowItWorkCard({ processSteps }) {
             <div className="bg-blue rounded-[15px] w-[55px] mt-[38px] group-hover:bg-[#00fcdb] transition duration-500 ease-in-out ">
               <i className="text-white">
                 <img
-                  className="py-2 mx-auto how-it-work-icon transition duration-500 ease-in-out filter brightness-0 invert w-[30px]"
+                  className="py-2 mx-auto how-it-work-icon transition duration-500 ease-in-out icon w-[30px]"
                   src={process.image}
                   alt={process.name}
                 />

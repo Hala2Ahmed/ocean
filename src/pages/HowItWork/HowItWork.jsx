@@ -1,7 +1,4 @@
 import React from "react";
-// import HowItWork1 from "../../assets/HowItWork1.png";
-// import HowItWork2 from "../../assets/HowItWork2.png";
-// import HowItWork3 from "../../assets/HowItWork3.png";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
@@ -23,7 +20,6 @@ export default function HowItWork() {
   const { data, isLoading, isError } = useQuery({
     queryKey: ['howItWorkData', i18n.language],
     queryFn: () => fetchHowItWorkData(i18n.language === 'ar' ? 'ar' : 'en'),
-    // staleTime: 5 * 60 * 1000, // 5 minutes cache
   });
 // console.log(data);
 
@@ -34,7 +30,9 @@ export default function HowItWork() {
   }
 
   if (isError || !data?.data) {
-    return <div className="bg-secondBackground text-white overflow-hidden pt-[130px] text-center">Error loading data</div>;
+    return <div className="text-white overflow-hidden pt-[130px] text-center flex flex-row gap-2 h-screen justify-center items-center bg-secondBackground">
+    Error loading data
+  </div>;
   }
   const getSettingValue = (key) => {
     return data?.data?.how_we_work_settings?.find(item => item.key_id === key)?.value || '';
@@ -44,23 +42,23 @@ export default function HowItWork() {
     {
       id: 1,
       image:  getSettingValue("how_work_step1_image"),
-      title: getSettingValue(`how_work_step1_title_${i18n.language}`),
-      description:getSettingValue(`how_work_step1_desc_${i18n.language}`),
+      title: getSettingValue(`how_work_step1_title_${i18n.language}`) || getSettingValue("how_work_step1_title_en"),
+      description:getSettingValue(`how_work_step1_desc_${i18n.language}`) || getSettingValue("how_work_step1_desc_en"),
       description2:t("howItWorksCard1Desc"),
     },
     {
       id: 2,
       image:  getSettingValue("how_work_step2_image"),
-      title: getSettingValue(`how_work_step2_title_${i18n.language}`),
-      description: getSettingValue(`how_work_step2_desc_${i18n.language}`),
+      title: getSettingValue(`how_work_step2_title_${i18n.language}`) || getSettingValue("how_work_step2_title_en"),
+      description: getSettingValue(`how_work_step2_desc_${i18n.language}`) || getSettingValue("how_work_step2_desc_en"),
       description2:t("howItWorksCard2Desc"),
       reverse: true,
     },
     {
       id: 3,
       image:  getSettingValue("how_work_step3_image"),
-      title: getSettingValue(`how_work_step3_title_${i18n.language}`),
-      description: getSettingValue(`how_work_step3_desc_${i18n.language}`),
+      title: getSettingValue(`how_work_step3_title_${i18n.language}`) || getSettingValue("how_work_step3_title_en"),
+      description: getSettingValue(`how_work_step3_desc_${i18n.language}`) ||getSettingValue("how_work_step3_desc_en"),
       description2:t("howItWorksCard3Desc"),
     },
   ];
@@ -72,14 +70,14 @@ export default function HowItWork() {
           {t("howItWorks")}
         </span>
         <h2 className="text-white lg:text-[36px] max-w-[507px] text-[25px] md:text-5xl font-bold leading-tight tracking-tight mx-auto pt-[4px] pb-[44px] lg:pb-[96px]">
-        {getSettingValue(`how_we_work_title_${i18n.language}`)}
+        {getSettingValue(`how_we_work_title_${i18n.language}`) || getSettingValue("how_we_work_title_en")}
         </h2>
       </div>
 
       <div className="py-16 px-[40px] lg:px-[150px] lg:pb-[281px] pb-[50px]">
         <div className="max-w-7xl mx-auto">
           <div>
-            {steps.map((step, index) => (
+            {steps.map((step) => (
               <div
                 key={step.id}
                 className={`flex flex-col ${

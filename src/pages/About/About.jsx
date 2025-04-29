@@ -33,7 +33,9 @@ export default function About() {
   }
 
   if (isError || !data?.data) {
-    return <div className="text-white overflow-hidden pt-[130px] text-center flex flex-row gap-2 h-screen justify-center items-center bg-secondBackground">Error loading data</div>;
+    return <div className="text-white overflow-hidden pt-[130px] text-center flex flex-row gap-2 h-screen justify-center items-center bg-secondBackground">
+    Error loading data
+  </div>;
   }
 
   const { about_settings, members } = data.data;
@@ -62,10 +64,10 @@ export default function About() {
             {t("aboutpage")}
           </span>
           <h5 className="lg:text-[36px] font-bold leading-[1.5] text-[25px] max-w-[591.7px] pt-[4.7px] lg:pb-[35px] pb-[16px]">
-          {getSetting(`about_page_title_${i18n.language}`)}
+          {getSetting(`about_page_title_${i18n.language}`) ||getSetting("about_page_title_en")}
           </h5>
           <p className="text-[16px] font-medium leading-[2] text-white/60 max-w-[634.9px]">
-          {getSetting(`about_page_desc_${i18n.language}`)}
+          {getSetting(`about_page_desc_${i18n.language}`) || getSetting("about_page_desc_en")}
           </p>
         </div>
       </div>
@@ -75,7 +77,7 @@ export default function About() {
           {t("aboutTeam")}
         </span>
         <h2 className="text-white lg:text-[36px] max-w-[507px] text-[30px] px-[36px] font-bold leading-tight tracking-tight mx-auto pt-[4px] pb-[44px] lg:pb-[69px]">
-        {getSetting(`about_team_title_${i18n.language}`)}
+        {getSetting(`about_team_title_${i18n.language}`) || getSetting("about_team_title_en")}
         </h2>
       </div>
 

@@ -12,7 +12,7 @@ export default function ServicesCard({ services }) {
             <div className="bg-[#ffffff07] rounded-sm w-[55px]  mt-[38px]">
               <i className="">
                 <img
-                  className="py-2 mx-auto filter brightness-0 invert w-[33px]"
+                  className="py-2 mx-auto w-[33px] icon"
                   src={service.image}
                   alt={service.title}
                 />

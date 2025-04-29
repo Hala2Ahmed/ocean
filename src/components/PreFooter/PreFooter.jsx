@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import img1 from "../../assets/253b63903a5bfc358e24dd058dc052a0.gif";
 import { useTranslation } from "react-i18next";
 import useNewsletterForm from "../../CustomHook/JoinOurWeekly";

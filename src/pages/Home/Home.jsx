@@ -23,8 +23,7 @@ import { useHomeData } from "../../CustomHook/HomeSocialLink";
 export default function Home() {
   const { t, i18n } = useTranslation();
   const { data, isLoading, isError } = useHomeData();
-
-  // console.log(data);
+  console.log(data);
   const logosRef = useRef(null);
 
   useEffect(() => {
@@ -67,13 +66,7 @@ export default function Home() {
     process_steps = [],
     latest_blogs = [],
   } = data?.data || {};
-  // Find specific settings
-  const homeAboutTitle =
-    home_settings.find((item) => item.key_id === "home_about_title_en")
-      ?.value || "";
-  const homeAboutDesc =
-    home_settings.find((item) => item.key_id === "home_about_desc_en")?.value ||
-    "";
+
   const formatTextWithColoredLastWord = (text) => {
     if (!text) return null;
 
@@ -99,15 +92,20 @@ export default function Home() {
               {formatTextWithColoredLastWord(
                 home_settings.find(
                   (item) => item.key_id === `hero_main_title_${i18n.language}`
-                )?.value
+                )?.value ||
+                  home_settings?.find(
+                    (item) => item.key_id === "hero_main_title_en"
+                  )?.value
               )}
             </h1>
             <p className="text-base sm:text-lg md:text-xl lg:text-[22px] font-normal leading-[1.6] pt-5 pb-[30px] xl:pb-[20px]">
-              {
-                home_settings.find(
-                  (item) => item.key_id === `hero_main_desc_${i18n.language}`
-                )?.value
-              }
+              {home_settings?.find(
+                (item) =>
+                  item.key_id === `hero_main_desc_${i18n.language || "en"}`
+              )?.value ||
+                home_settings?.find(
+                  (item) => item.key_id === "hero_main_desc_en"
+                )?.value}
             </p>
             <Link
               to="/contact"
@@ -138,7 +136,7 @@ export default function Home() {
                   />
                   +
                 </h4>
-                <span>
+                <span className="max-w-[108.67px]">
                   {
                     general_settings.find(
                       (item) => item.key_id === "clients_served_count"
@@ -158,7 +156,7 @@ export default function Home() {
                   />
                   +
                 </h4>
-                <span>
+                <span className="max-w-[108.67px]">
                   {
                     general_settings.find(
                       (item) => item.key_id === "satisfied_users_count"
@@ -178,7 +176,7 @@ export default function Home() {
                   />
                   +
                 </h4>
-                <span>
+                <span className="max-w-[108.67px]">
                   {
                     general_settings.find(
                       (item) => item.key_id === "projects_delivered_count"
@@ -230,14 +228,40 @@ export default function Home() {
           <div className="flex-1 ">
             <span className="text-[#00fcdb] uppercase">{t("about")}</span>
             <h2 className="pt-[23px] pb-[10px] text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-semibold leading-[1.11] tracking-[-2px]">
-              <span className="text-blue">{t("aboutHeaderSpan")}</span>{" "}
-              {t("aboutHeader")}
+              <span className="text-blue">
+                {home_settings
+                  .find(
+                    (item) =>
+                      item.key_id === `home_about_title_${i18n.language}`
+                  )
+                  ?.value.split(" ")[0] ||
+                  home_settings
+                    .find((item) => item.key_id === "home_about_title_en")
+                    ?.value.split(" ")[0]}
+              </span>{" "}
+              {home_settings
+                .find(
+                  (item) => item.key_id === `home_about_title_${i18n.language}`
+                )
+                ?.value.split(" ")
+                .slice(1)
+                .join(" ") ||
+                home_settings
+                  .find((item) => item.key_id === "home_about_title_en")
+                  ?.value.split(" ")
+                  .slice(1)
+                  .join(" ")}
             </h2>
             <p className="text-[#A8ACB7] text-base sm:text-lg md:text-xl">
-              {t("aboutDesc")}
+              {home_settings.find(
+                (item) => item.key_id === `home_about_desc_${i18n.language}`
+              )?.value ||
+                home_settings.find(
+                  (item) => item.key_id === "home_about_desc_en"
+                )?.value}
             </p>
             <Link to="/about" className="">
-              <button className="rounded-[10px] text-[18px] cursor-pointer  py-3 px-6 md:py-[19px] md:pr-[38px] md:pb-[20px] md:pl-[47px] mt-[42px]  border-2 border-blue shadow-lg hover:bg-blue text-white hover:text-white duration-300 active:scale-[0.98]">
+              <button className="rounded-[10px] text-[18px] cursor-pointer py-3 px-6 md:py-[19px] md:pr-[38px] md:pb-[20px] md:pl-[47px] mt-[42px] border-2 border-blue shadow-lg bg-blue hover:bg-transparent text-white duration-300 active:scale-[0.98]">
                 {t("aboutButton")}
               </button>
             </Link>
@@ -263,7 +287,10 @@ export default function Home() {
             >
               {t("PortfolioHeader")}
             </h2>
-            <PortfoliosCard />
+            <PortfoliosCard
+              data={{ services: recent_services }}
+              servicesKey="services"
+            />{" "}
           </div>
         </div>
       </div>
@@ -310,7 +337,7 @@ export default function Home() {
               {t("BlogHomeHeader")}
             </h2>
           </div>
-          <BlogCard />
+          <BlogCard latest_blogs={[...latest_blogs].reverse()} />
         </div>
       </div>
 

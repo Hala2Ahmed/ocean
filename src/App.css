@@ -6,12 +6,19 @@ html {
 }
 body:lang(en) {
     font-family: "Work Sans", sans-serif;
+    background-color: #000;
 }
 body:lang(ar) {
   font-family: "Tajawal", sans-serif;
+  background-color: #000;
 }
 .how-it-work-card:hover .how-it-work-icon {
+  -webkit-filter: brightness(0) invert(0);
   filter: brightness(0) invert(0);
+}
+.icon {
+  -webkit-filter: brightness(0) invert(1);
+  filter: brightness(0) invert(1);
 }
 @keyframes infinite-scroll {
   from {

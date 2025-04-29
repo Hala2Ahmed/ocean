@@ -14,14 +14,22 @@ export default function WhatsAppContact() {
   // Check if the current language is Arabic
   const isArabic = i18n.language === "ar";
 
+  const formatWhatsAppNumber = (number) => {
+    if (!number) return '';
+    return number.replace(/\D/g, '');
+  };
+
+  if (!whatsAppNumber) return null;
+
   return (
     <a
-      href={`https://wa.me/${whatsAppNumber}`}
+      href={`https://wa.me/${formatWhatsAppNumber(whatsAppNumber)}`}
       target="_blank"
       rel="noreferrer noopener"
       className={`fixed bottom-[40%] z-50 inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#25d366] ${
         isArabic ? "left-8" : "right-8"
       }`}
+      aria-label="Contact us on WhatsApp"
     >
       <div
         className="absolute z-10 top-0 left-0 w-full h-full rounded-full bg-[#25d366] animate-ping"

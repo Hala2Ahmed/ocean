@@ -24,7 +24,7 @@ function App() {
    { path: '*',element: <Notfound />},
    { path: 'projects',element: <Suspense fallback={<Loading />}><Projects /></Suspense>},
    { path: 'blog',element: <Suspense fallback={<Loading />}><Service /></Suspense>},
-   { path: 'blogDetails',element: <Suspense fallback={<Loading />}><Blog /></Suspense>},
+   { path: 'blog-details/:id',element: <Suspense fallback={<Loading />}><Blog /></Suspense>},
    { path: 'HowItWork',element: <Suspense fallback={<Loading />}><HowItWork /></Suspense>},
   ]}
   ])

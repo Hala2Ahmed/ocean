@@ -1,89 +1,54 @@
 import React from "react";
-import service1 from "../../assets/service1.png";
-import service2 from "../../assets/service2.png";
-import service3 from "../../assets/service3.png";
-import service4 from "../../assets/service4.png";
-import service5 from "../../assets/service5.png";
-import service6 from "../../assets/service6.png";
-import serviceIcon from "../../assets/serviceIcon.svg";
 import PreFooter from "../../components/PreFooter/PreFooter";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../components/Loading/Loading";
-// async function fetchBlogData(lang) {
-//   try {
-//     const response = await axios.get("https://dashboard.ocean-it.net/api/blogs", {
-//       headers: { 'lang': lang },
-//       params: {
-//         page: 1,
-//         size: 6,
-//         tag_title: 'seo'
-//       }
-//     });
-//     console.log("API Response:", response.data); // تأكد من وجود البيانات
-//     return response.data;
-//   } catch (error) {
-//     console.error("API Error:", error.response?.data || error.message); // سجل الخطأ بالكامل
-//     throw new Error('Failed to fetch data');
-//   }
-// }
-export default function Service() {
-    const { t, i18n } = useTranslation();
-  //   const { data, isLoading, isError } = useQuery({
-  //     queryKey: ['blogData', i18n.language],
-  //     queryFn: () => fetchBlogData(i18n.language === 'ar' ? 'ar' : 'en'),
-  //     // staleTime: 5 * 60 * 1000, // 5 minutes cache
-  //   });
-  // // console.log(data);
-  
-  //   if (isLoading) {
-  //     return (
-  //      <Loading />
-  //     );
-  //   }
-  const cards = [
-    {
-      image: service1,
-      head: t("serviceHeaderCard1"),
-      description:
-        t("servicedescCard1"),
-      date: t("serviceDateCard1"),
-    },
-    {
-      image: service2,
-      head: t("serviceHeaderCard2"),
-      description: t("servicedescCard2"),
-      date: t("serviceDateCard2"),
-    },
-    {
-      image: service3,
-      head: t("serviceHeaderCard3"),
-      description:
-        t("servicedescCard3"),
-      date: t("serviceDateCard3"),
-    },
-    {
-      image: service4,
-      head: t("serviceHeaderCard4"),
-      description: t("servicedescCard4"),
-      date: t("serviceDateCard4"),
-    },
-    {
-      image: service5,
-      head: t("serviceHeaderCard5"),
-      description: t("servicedescCard5"),
-      date: t("serviceDateCard5"),
-    },
-    {
-      image: service6,
-      head: t("serviceHeaderCard6"),
-      description: t("servicedescCard6"),
-      date: t("serviceDateCard6"),
-    },
-  ];
+import serviceIcon from "../../assets/serviceIcon.svg";
 
+async function fetchBlogData(lang, page = 1, size = 6, tagTitle = null) {
+  try {
+    const params = {
+      page,
+      size,
+    };
+    
+    if (tagTitle) {
+      params.tag_title = tagTitle;
+    }
+    
+    const response = await axios.get("https://dashboard.ocean-it.net/api/blogs", {
+      headers: { 'lang': lang },
+      params
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error('Failed to fetch data');
+  }
+}
+
+export default function Blogs() {
+  const { t, i18n } = useTranslation();
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ['blogData', i18n.language],
+    queryFn: () => fetchBlogData(i18n.language === 'ar' ? 'ar' : 'en'),
+  });
+
+  if (isLoading) {
+    return <Loading />;
+  }
+  
+  if (isError || !data?.data) {
+    return (
+      <div className="text-white overflow-hidden pt-[130px] text-center flex flex-row gap-2 h-screen justify-center items-center bg-secondBackground">
+        Error loading data
+      </div>
+    );
+  }
+
+  const blogData = data.data?.blog_settings;
+  const relatedBlogs = [...(data.data?.blogs || [])].reverse();
   return (
     <>
       <div className="bg-secondBackground text-[#ffffff] overflow-hidden pt-[130px]">
@@ -91,47 +56,47 @@ export default function Service() {
           <span className="text-[#00fcdb] text-sm md:text-base font-semibold">
             {t("service")}
           </span>
-          <h2 className="text-white lg:text-[36px] max-w-[507px] text-[25px] md:text-5xl font-bold leading-tight tracking-tight mx-auto pt-[4px] pb-[44px] lg:pb-[96px]">
-            {t("serviceHeader")}
+          <h2 className="text-white lg:text-[36px] max-w-[507px] text-[25px] font-bold leading-tight tracking-tight mx-auto pt-[4px] pb-[44px] lg:pb-[96px]">
+            {blogData.find(item => item.key_id === `blog_intro_title_${i18n.language}`)?.value || blogData.find(item => item.key_id === "blog_intro_title_en")?.value}
           </h2>
         </div>
 
         <div className="lg:px-[148px] px-[50px]">
           <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6">
-            {cards.map((card, index) => (
+            {relatedBlogs.map((card, index) => (
               <div
                 key={index}
                 className="rounded-[10px] flex flex-col bg-[#0d0d0d]"
               >
-              <Link to="/blogDetails">
-              <img
-                  src={card.image}
-                  className="w-full rounded-[5px]"
-                  alt={card.head}
-                  loading="lazy"
-                />
-                <div>
-                  <div className="pt-[33px]">
-                    <h3 className="text-[20px] font-bold leading-[1.7]">
-                      {card.head}
-                    </h3>
-                    <p className="m-[18.2px_0_30.4px] leading-[1.89] text-[#ffffff99] text-[18px] font-medium">
-                      {card.description}
-                    </p>
-                    <div className="flex gap-3 items-center mb-[38.6px]">
-                      <i>
-                        <img
-                          className="w-full"
-                          src={serviceIcon}
-                          alt="serviceIcon"
-                        />
-                      </i>
-                      <span className="text-[#a8acb7] text-[12px] leading-[2]">
-                        {card.date}
-                      </span>
+                <Link to={`/blog-details/${card.id}`}>
+                  <img
+                    src={card.image}
+                    className="w-full rounded-[5px]"
+                    alt="blog"
+                    loading="lazy"
+                  />
+                  <div>
+                    <div className="pt-[33px]">
+                      <h3 className="text-[20px] font-bold leading-[1.7]">
+                        {card.title}
+                      </h3>
+                      <p className="m-[18.2px_0_30.4px] leading-[1.89] text-[#ffffff99] text-[18px] font-medium">
+                        {card.description}
+                      </p>
+                      <div className="flex gap-3 items-center mb-[38.6px]">
+                        <i>
+                          <img
+                            className="w-full"
+                            src={serviceIcon}
+                            alt="serviceIcon"
+                          />
+                        </i>
+                        <span className="text-[#a8acb7] text-[12px] leading-[2]">
+                          {card.date}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
                 </Link>
               </div>
             ))}
@@ -140,7 +105,7 @@ export default function Service() {
             <button className="font-semibold bg-[#ffffff19] p-[15px_75.4px_20.2px_55px] cursor-pointer">
               {t("serviceButton")}
             </button>
-          </div>{" "}
+          </div>
         </div>
       </div>
       <PreFooter />

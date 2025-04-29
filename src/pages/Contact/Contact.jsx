@@ -95,7 +95,7 @@ export default function Contact() {
 
   if (isError || !data?.data) {
     return (
-      <div className="bg-secondBackground text-white overflow-hidden pt-[130px] text-center">
+      <div className="text-white overflow-hidden pt-[130px] text-center flex flex-row gap-2 h-screen justify-center items-center bg-secondBackground">
         Error loading data
       </div>
     );
@@ -105,11 +105,13 @@ export default function Contact() {
     <div className="bg-secondBackground text-white overflow-hidden pt-[130px]">
       <div className="text-center lg:pt-[116px] pt-[36px]">
         <span className="text-[51px] font-semibold leading-[1.1]">
-          {getContactSetting(`contactus_title_${i18n.language}`)}
+          {getContactSetting(`contactus_title_${i18n.language}`) || getContactSetting("contactus_title_en")}
         </span>
         <h2 className="text-[22px] font-semibold leading-[1.4] max-w-[787px] mx-auto px-[20px] pt-[23px] pb-[44px] lg:pb-[96px]">
           {highlightOceanWord(
             getContactSetting(`contactus_intro_${i18n.language}`)
+          ) || highlightOceanWord(
+            getContactSetting("contactus_intro_en")
           )}
         </h2>
       </div>
@@ -117,10 +119,10 @@ export default function Contact() {
       <div className="flex flex-col lg:flex-row justify-between items-center gap-4 px-[50px] md:px-8 lg:pr-[100px] lg:pb-[310px] pb-[50px]">
         <div className="w-full lg:w-auto px-0 lg:px-[40px]">
           <h5 className="max-w-full lg:max-w-[581px] text-[24px] md:text-[30px] font-semibold tracking-[-0.6px]">
-            {getContactSetting(`contactus_form_heading_${i18n.language}`)}
+            {getContactSetting(`contactus_form_heading_${i18n.language}`) || getContactSetting("contactus_form_heading_en")}
           </h5>
           <p className="max-w-full lg:max-w-[608px] opacity-80 text-[13px] pt-[7px] pb-[20px] md:pb-[41px] font-medium leading-[1.6] tracking-[0.26px] text-white/80">
-            {getContactSetting(`contactus_form_desc_${i18n.language}`)}
+            {getContactSetting(`contactus_form_desc_${i18n.language}`) || getContactSetting("contactus_form_desc_en")}
           </p>
           <form onSubmit={handleSubmit} className="w-full">
             <div className="flex flex-col md:flex-row gap-[14px]">
