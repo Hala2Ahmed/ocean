@@ -29,8 +29,9 @@ i18n
     resources,
     fallbackLng: "en",
     detection: {
-      order: ['cookie', 'localStorage', 'navigator', 'htmlTag'],
+      order: ['localStorage', 'cookie', 'navigator', 'htmlTag'],
       caches: ['localStorage', 'cookie'],
+      excludeCachesFor: ['cimode']
     },
     interpolation: {
       escapeValue: false
@@ -40,9 +41,11 @@ i18n
     }
   });
 
-i18n.on('languageChanged', (lng) => {
-  document.documentElement.lang = lng;
-  document.documentElement.dir = lng === 'ar' ? 'rtl' : 'ltr';
-});
+  i18n.on('languageChanged', (lng) => {
+    const dir = lng === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.dir = dir;
+    document.documentElement.lang = lng;
+  });
+  
 
   export default i18n;
