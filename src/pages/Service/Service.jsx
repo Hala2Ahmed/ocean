@@ -51,6 +51,8 @@ export default function Blogs() {
   const relatedBlogs = [...(data.data?.blogs || [])].reverse();
   return (
     <>
+     <title>{t("navbarlink6")}</title>
+     <meta name="description" content={t("aboutDesc")} />
       <div className="bg-secondBackground text-[#ffffff] overflow-hidden pt-[130px]">
         <div className="text-center lg:pt-[116px] pt-[36px]">
           <span className="text-[#00fcdb] text-sm md:text-base font-semibold">
@@ -73,7 +75,6 @@ export default function Blogs() {
                     src={card.image}
                     className="w-full rounded-[5px]"
                     alt="blog"
-                    loading="lazy"
                   />
                   <div>
                     <div className="pt-[33px]">

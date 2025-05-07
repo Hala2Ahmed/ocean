@@ -102,6 +102,9 @@ export default function Contact() {
   }
 
   return (
+    <>
+     <title>{t("navbarButton")}</title>
+     <meta name="description" content={t("aboutDesc")} />
     <div className="bg-secondBackground text-white overflow-hidden pt-[130px]">
       <div className="text-center lg:pt-[116px] pt-[36px]">
         <span className="text-[51px] font-semibold leading-[1.1]">
@@ -203,5 +206,6 @@ export default function Contact() {
         </div>
       </div>
     </div>
+    </>
   );
 }

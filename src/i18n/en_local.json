@@ -1,5 +1,4 @@
 {
-
   "navbarlink1": "Home",
   "navbarlink2": "Service",
   "navbarlink3": "Projects",
@@ -14,8 +13,6 @@
   "serviceHomeHeader": "Our Services",
  
   "about": "About Us",
-  "aboutHeaderSpan": "Ocean:",
-  "aboutHeader": "Where Digital Transformations Begin",
   "aboutDesc": "Ocean is a digital agency specializing in web programming, motion design, video editing, and digital marketing. We combine creativity and technology to help businesses grow and succeed online. Our mission is to deliver high-quality, tailored solutions that meet your unique needs.",
   "aboutButton": "About us",
 
@@ -45,32 +42,6 @@
   "footerCopyright":"Ⓒ Ocean Market. Use this template freely.",
 
   "service": "Blog",
-  "serviceHeader": "Get precise knowledge wherever you are",
-
-  "serviceHeaderCard1": "SEO tricks that can increase the traffic of your website",
-  "servicedescCard1": "People have been using wrong SEO techniques on their websites.",
-  "serviceDateCard1": "June 25, 2024",
-
-  "serviceHeaderCard2": "10 Figma Plugins that will increase your productivity",
-  "servicedescCard2": "All these plugins are free and you can use them forever",
-  "serviceDateCard2": "June 25, 2024",
-
-  "serviceHeaderCard3": "How to deploy a Node JS application to a VPS",
-  "servicedescCard3": "Step by step setting up the server and deploying the application",
-  "serviceDateCard3": "June 25, 2024",
-
-  "serviceHeaderCard4": "How to compress image size without losing quality",
-  "servicedescCard4": "Small images can speed up website load times",
-  "serviceDateCard4": "June 25, 2024",
-
-  "serviceHeaderCard5": "Why is Google still not recognizing my website?",
-  "servicedescCard5": "Improve the SEO techniques that you have used so far",
-  "serviceDateCard5": "June 25, 2024",
-
-  "serviceHeaderCard6": "Improve the SEO techniques that you have used so far",
-  "servicedescCard6": "Get accurate error messages when the application crashes",
-  "serviceDateCard6": "June 25, 2024",
-
   "serviceButton": "Load More",
 
   "project": "PROJECTS",
@@ -87,23 +58,12 @@
   "howItWorksCard2Desc": "In this step, the application is 100% complete.",
   "howItWorksCard3Desc": "In this step, everything is done and the contract ends.",
 
-  "blog": "The World of SEO",
-  "blogDate": "June 25, 2024",
   "blogHeader": "Created By: ",
   "blogDesc": "Description:",
-  "blogDesc1": " The world of SEO (Search Engine Optimization) is both an art and a science dedicated to improving website rankings on search engine result pages. It’s a perfect blend of technical strategies and creative approaches designed to attract more visitors and optimize user engagement.",
-  "blogDesc2": "In the SEO universe, every element matters—from selecting the right keywords to enhancing website speed and user experience. Professionals rely on data and analytics to understand user behavior and refine their strategies to align with ever-changing search engine algorithms. SEO is more than just tools and techniques; it’s a continuous process of building trust with audiences and increasing visibility online.",
   "blogDetails": "Details:",
   "blogDetails1": "Learn more about SEO optimization",
   "blogDetails2": "Explore SEO tools and resources",
   "blogTag": "Tags",
-  "blogTag1": "SEO",
-  "blogTag2": "Search Engine Optimization",
-  "blogTag3": "Digital Marketing",
-  "blogTag4": "Keywords",
-  "blogCard1": "The Top Benefits of AI for Marketers, State of AI Data",
-  "blogCard2": "AI Tools to Help You Grow Your AI Graphics Business",
-  "blogCard3": "When Is the Best Time to Post on Instagram in 2023?",
 
   "aboutpage": "about",
   "aboutTeam":"our team",

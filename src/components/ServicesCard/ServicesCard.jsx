@@ -2,7 +2,7 @@ import React from "react";
 
 export default function ServicesCard({ services }) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 pt-5 gap-5 px-4 md:px-[144px] md:pt-[120px]">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 pt-5 gap-5 px-4  md:pt-[120px] max-w-screen-xl mx-auto">
       {services?.map((service, index) => (
         <div
           key={index}

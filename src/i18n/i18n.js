@@ -19,29 +19,30 @@ const resources = {
 const savedLang = localStorage.getItem('i18nextLng') || 'en';
 const initialDir = savedLang === 'ar' ? 'rtl' : 'ltr';
 
-
 document.documentElement.dir = initialDir;
 document.documentElement.lang = savedLang;
 
 i18n
   .use(LanguageDetector)
-  .use(initReactI18next) // passes i18n down to react-i18next
+  .use(initReactI18next)
   .init({
     resources,
-    fallbackLng: "en", // language to use, more information here: https://www.i18next.com/overview/configuration-options#languages-namespaces-resources
-    // you can use the i18n.changeLanguage function to change the language manually: https://www.i18next.com/overview/api#changelanguage
-    // if you're using a language detector, do not define the lng option
+    fallbackLng: "en",
     detection: {
       order: ['cookie', 'localStorage', 'navigator', 'htmlTag'],
-      caches: ['localStorage', 'cookie'], // where to cache the language
-      excludeCacheFor: ['cimode'] // languages to not persist
+      caches: ['localStorage', 'cookie'],
     },
     interpolation: {
-      escapeValue: false // react already safes from xss
+      escapeValue: false
     },
     react: {
       useSuspense: false
     }
   });
+
+i18n.on('languageChanged', (lng) => {
+  document.documentElement.lang = lng;
+  document.documentElement.dir = lng === 'ar' ? 'rtl' : 'ltr';
+});
 
   export default i18n;

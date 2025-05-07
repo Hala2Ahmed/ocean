@@ -29,7 +29,7 @@ export default function GenericPortfolioCard({
   return (
     <div className="flex flex-col items-center justify-center">
 
-      <div className="w-full max-w-4xl px-4 py-2 pb-[40px] pt-[20px] rounded-sm flex flex-wrap justify-center gap-2 md:gap-4 text-white cursor-pointer text-sm md:text-lg font-semibold">
+      <div className="w-full px-4 py-2 pb-[40px] pt-[20px] rounded-sm flex flex-wrap justify-center gap-2 md:gap-4 text-white cursor-pointer text-sm md:text-lg font-semibold">
         {categories.map((category, index) => (
           <div
             key={`${category.id}-${index}`}
@@ -45,7 +45,7 @@ export default function GenericPortfolioCard({
         ))}
       </div>
 
-      <div className="w-full max-w-6xl px-4">
+      <div className="max-w-screen-xl mx-auto w-full px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4">
           {worksToShow.map((work) => (
             <PortfolioCard key={`work-${work.id}`} image={work.image} />

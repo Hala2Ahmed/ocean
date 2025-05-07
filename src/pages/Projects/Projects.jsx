@@ -43,6 +43,8 @@ export default function Projects() {
   // const worksToShow = activeCategoryData?.works || [];
   return (
     <>
+     <title>{t("navbarlink3")}</title>
+     <meta name="description" content={t("aboutDesc")} />
       <div className="bg-secondBackground lg:pt-[250px] pt-[200px] lg:px-[152px] lg:pb-[180px] px-[20px] pb-[50px] overflow-hidden">
         <div className="text-center">
           <span className="text-[#00fcdb] text-sm md:text-base font-semibold">

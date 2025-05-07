@@ -23,7 +23,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-primary text-white">
-      <div className="lg:px-[212px] px-[40px] pt-[40px]">
+      <div className="max-w-screen-xl mx-auto px-7 pt-[40px]">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
           <div className="sm:col-span-1">
             <img src={logo} alt="logo ocean" className="w-24 md:w-32" />

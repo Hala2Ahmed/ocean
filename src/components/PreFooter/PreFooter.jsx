@@ -8,8 +8,8 @@ export default function PreFooter() {
   const { isLoading, errorMsg, formik } = useNewsletterForm();
 
   return (
-    <div className="bg-secondBackground text-[#ffffff] pt-[104px] pb-[75px] px-7 md:px-[113px]">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center justify-center">
+    <div className="bg-secondBackground text-[#ffffff] pt-[104px] pb-[75px] px-7">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center justify-center max-w-screen-xl mx-auto">
         <div className="bg-blue p-[14px_32px_17px] rounded-[114px] sm:w-full md:w-[406px] sm:mx-auto mx-0">
           <img className="scale-x-[-1]" src={img1} alt="gif" />
         </div>
