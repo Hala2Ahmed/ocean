@@ -4,19 +4,13 @@ import arTranslates from "./ar_local.json";
 import enTranslates from "./en_local.json";
 import LanguageDetector from 'i18next-browser-languagedetector';
 
-// the translations
-// (tip move them in a JSON file and import them,
-// or even better, manage them separated from your code: https://react.i18next.com/guides/multiple-translation-files)
 const resources = {
-  en: {
-    translation: enTranslates
-  },
-  ar: {
-    translation: arTranslates
-  }
+  en: { translation: enTranslates },
+  ar: { translation: arTranslates }
 };
 
-const savedLang = localStorage.getItem('i18nextLng') || 'en';
+const DEFAULT_LANG = 'en'; 
+const savedLang = localStorage.getItem('i18nextLng') || DEFAULT_LANG;
 const initialDir = savedLang === 'ar' ? 'rtl' : 'ltr';
 
 document.documentElement.dir = initialDir;
@@ -27,11 +21,12 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    fallbackLng: "en",
+    fallbackLng: DEFAULT_LANG,
+    lng: DEFAULT_LANG, 
     detection: {
       order: ['localStorage', 'cookie', 'navigator', 'htmlTag'],
-      caches: ['localStorage', 'cookie'],
-      excludeCachesFor: ['cimode']
+      caches: ['localStorage'],
+      lookupLocalStorage: 'i18nextLng',
     },
     interpolation: {
       escapeValue: false
@@ -41,11 +36,10 @@ i18n
     }
   });
 
-  i18n.on('languageChanged', (lng) => {
-    const dir = lng === 'ar' ? 'rtl' : 'ltr';
-    document.documentElement.dir = dir;
-    document.documentElement.lang = lng;
-  });
-  
+i18n.on('languageChanged', (lng) => {
+  const dir = lng === 'ar' ? 'rtl' : 'ltr';
+  document.documentElement.dir = dir;
+  document.documentElement.lang = lng;
+});
 
-  export default i18n;
+export default i18n;
