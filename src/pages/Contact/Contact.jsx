@@ -105,7 +105,7 @@ export default function Contact() {
     <>
      <title>{t("navbarButton")}</title>
      <meta name="description" content={t("aboutDesc")} />
-    <div className="bg-secondBackground text-white overflow-hidden pt-[130px]">
+    <div className="bg-secondBackground text-white overflow-hidden lg:pt-[130px] pt-[200px]">
       <div className="text-center lg:pt-[116px] pt-[36px]">
         <span className="text-[51px] font-semibold leading-[1.1]">
           {getContactSetting(`contactus_title_${i18n.language}`) || getContactSetting("contactus_title_en")}

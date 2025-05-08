@@ -9,30 +9,35 @@ const resources = {
   ar: { translation: arTranslates }
 };
 
-const DEFAULT_LANG = 'en'; 
-const savedLang = localStorage.getItem('i18nextLng') || DEFAULT_LANG;
-const initialDir = savedLang === 'ar' ? 'rtl' : 'ltr';
+const getInitialLanguage = () => {
+  const savedLang = localStorage.getItem('i18nextLng');
+  if (savedLang) return savedLang;
 
-document.documentElement.dir = initialDir;
-document.documentElement.lang = savedLang;
+  const browserLang = navigator.language.split('-')[0];
+  if (['ar', 'en'].includes(browserLang)) return browserLang;
+
+  return 'en';
+};
+
+const initialLang = getInitialLanguage();
+document.documentElement.lang = initialLang;
+document.documentElement.dir = initialLang === 'ar' ? 'rtl' : 'ltr';
 
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     resources,
-    fallbackLng: DEFAULT_LANG,
-    lng: DEFAULT_LANG, 
+    lng: initialLang,
+    fallbackLng: 'en',
     detection: {
-      order: ['localStorage', 'cookie', 'navigator', 'htmlTag'],
+      order: ['localStorage', 'navigator'],
       caches: ['localStorage'],
       lookupLocalStorage: 'i18nextLng',
+      checkForSimilarInWhitelist: true
     },
     interpolation: {
       escapeValue: false
-    },
-    react: {
-      useSuspense: false
     }
   });
 

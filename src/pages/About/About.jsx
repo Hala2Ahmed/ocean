@@ -50,7 +50,7 @@ export default function About() {
     <>
      <title>{t("navbarlink4")}</title>
      <meta name="description" content={t("aboutDesc")} />
-    <div className="bg-secondBackground text-white overflow-hidden sm:pt-[130px]">
+    <div className="bg-secondBackground text-white overflow-hidden lg:pt-[130px] pt-[200px]">
       <div className="flex items-center max-w-screen-xl mx-auto lg:flex-row flex-col lg:pt-[142px] lg:pb-[181px] pt-[36px] pb-[36px] lg:px-[140px] px-[36px] gap-4">
         <div className="relative">
           <img className="w-[378.11px]" src={getSetting('about_page_image_1')} alt="About" />

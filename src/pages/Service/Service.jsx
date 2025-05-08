@@ -53,7 +53,7 @@ export default function Blogs() {
     <>
      <title>{t("navbarlink6")}</title>
      <meta name="description" content={t("aboutDesc")} />
-      <div className="bg-secondBackground text-[#ffffff] overflow-hidden pt-[130px]">
+      <div className="bg-secondBackground text-[#ffffff] overflow-hidden lg:pt-[130px] pt-[200px]">
         <div className="text-center lg:pt-[116px] pt-[36px]">
           <span className="text-[#00fcdb] text-sm md:text-base font-semibold">
             {t("service")}

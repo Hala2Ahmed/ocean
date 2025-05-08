@@ -67,7 +67,7 @@ export default function HowItWork() {
     <>
      <title>{t("navbarlink5")}</title>
      <meta name="description" content={t("aboutDesc")} />
-    <div className="bg-secondBackground text-white overflow-hidden pt-[130px]">
+    <div className="bg-secondBackground text-white overflow-hidden lg:pt-[130px] pt-[200px]">
       <div className="text-center lg:pt-[116px] pt-[36px] px-[20px]">
         <span className="text-[#00fcdb] text-sm md:text-base font-semibold">
           {t("howItWorks")}
