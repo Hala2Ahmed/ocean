@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import CountUp from "react-countup";
 import logo from "../../assets/RocketLaunch.svg";
 import heroGif from "../../assets/fc35451534249e6850f9fb9dd3edb206.gif";
-import aboutImg from "../../assets/about-img.jpg";
+import aboutImg1 from "../../assets/arabout.png";
+import aboutImg2 from "../../assets/enabout.png";
 import scroll1 from "../../assets/scroll1.png";
 import scroll2 from "../../assets/scroll2.png";
 import scroll3 from "../../assets/scroll3.png";
@@ -83,8 +84,8 @@ export default function Home() {
   };
   return (
     <>
-    <title>{t("navbarlink1")}</title>
-    <meta name="description" content={t("aboutDesc")} />
+      <title>{t("navbarlink1")}</title>
+      <meta name="description" content={t("aboutDesc")} />
       {/* Hero Section */}
       <div className="text-[#ffffff] bg-primary overflow-hidden pt-[150px]">
         <div className="px-7 md:px-[85px] pb-[77px] lg:px-[70px]  max-w-screen-xl mx-auto pt-[50px] grid grid-cols-1 lg:grid-cols-2 gap-8 justify-center items-center">
@@ -216,15 +217,15 @@ export default function Home() {
       </div>
 
       {/* About Section */}
-      <div className="bg-primary text-[#ffffff] pt-[50px] pb-[104px] px-7 overflow-hidden">
+      <div className="bg-primary text-[#ffffff] py-[50px]  px-7 overflow-hidden">
         <div className="flex flex-col md:flex-row gap-4 justify-between items-center max-w-screen-xl mx-auto">
           <div className="flex-1 mx-auto">
             <img
               data-aos="fade-up"
               data-aos-delay="200"
-              src={aboutImg}
+              src={i18n.language === "ar" ? aboutImg1 : aboutImg2}
               alt="About Us"
-              className="w-[401px] h-[486px]"
+              className="w-full max-w-[401px] aspect-[401/486] object-cover"
             />
           </div>
           <div className="flex-1 ">
