@@ -3,7 +3,7 @@ import './App.css'
 import Layout from './Layout/Layout'
 import { lazy, Suspense } from 'react';
 import Home from './pages/Home/Home'
-import About from './pages/About/About';
+const About = lazy(() => import('./pages/About/About'));
 import Notfound from './pages/Notfound/Notfound'
 const Projects = lazy(() => import('./pages/Projects/Projects'));
 const Service = lazy(() => import('./pages/Service/Service'));
@@ -19,13 +19,13 @@ function App() {
   const router=createBrowserRouter([
   {path: "", element:<Layout />,children:[
    { index: true,element: <Home />},
-   { path: 'about',element:<About />},
-   { path: 'contact',element: <Suspense fallback={<Loading />}><Contact /></Suspense>},
+   { path: '/about',element: <Suspense fallback={<Loading />}><About /></Suspense>},
+   { path: '/contact',element: <Suspense fallback={<Loading />}><Contact /></Suspense>},
    { path: '*',element: <Notfound />},
-   { path: 'projects',element: <Suspense fallback={<Loading />}><Projects /></Suspense>},
-   { path: 'blog',element: <Suspense fallback={<Loading />}><Service /></Suspense>},
-   { path: 'blog-details/:id',element: <Suspense fallback={<Loading />}><Blog /></Suspense>},
-   { path: 'HowItWork',element: <Suspense fallback={<Loading />}><HowItWork /></Suspense>},
+   { path: '/projects',element: <Suspense fallback={<Loading />}><Projects /></Suspense>},
+   { path: '/blog',element: <Suspense fallback={<Loading />}><Service /></Suspense>},
+   { path: '/blog-details/:id',element: <Suspense fallback={<Loading />}><Blog /></Suspense>},
+   { path: '/HowItWork',element: <Suspense fallback={<Loading />}><HowItWork /></Suspense>},
   ]}
   ])
  

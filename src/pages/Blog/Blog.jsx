@@ -124,7 +124,7 @@ export default function BlogDetails() {
                   <div className="rounded-[10px] flex flex-col bg-primary">
                     <img
                       src={blog.image}
-                      className="w-full mb-[74px] rounded-t-[10px]"
+                      className="w-full h-[260px] object-cover  mb-[74px] rounded-t-[10px]"
                       alt={blog.title}
                     />
                     <div>
