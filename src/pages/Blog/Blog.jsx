@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../components/Loading/Loading";
+import BlogStructuredData from "../../components/BlogStructuredData/BlogStructuredData";
 
 async function fetchBlogDetailsData(lang, id) {
   try {
@@ -46,11 +47,26 @@ export default function BlogDetails() {
 
   const blogData = data.data.blog;
   const relatedBlogs = data.data.related_blogs;
+  const fullUrl = window.location.href;  
 
   return (
     <>
-      <title>{t("navbarlink6")}</title>
-      <meta name="description" content={t("aboutDesc")} />
+     <title>{data?.data?.seo_settings.title}</title>
+     <meta name="description" content={data?.data?.seo_settings.description} />
+        {/* Open Graph */}
+        <meta property="og:title" content={data?.data?.seo_settings.title} />
+        <meta property="og:description" content={data?.data?.seo_settings.description} />
+        <meta property="og:image" content={blogData.image} />
+        <meta property="og:url" content={fullUrl} />
+        <meta property="og:type" content="article" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={data?.data?.seo_settings.title} />
+        <meta name="twitter:description" content={data?.data?.seo_settings.description} />
+        <meta name="twitter:image" content={blogData.image} />
+        <BlogStructuredData blog={blogData} />
+
       <div className=" bg-secondBackground text-[#ffffff] overflow-hidden pt-[150px]">
         <img
           src={blogData.image}
@@ -80,23 +96,30 @@ export default function BlogDetails() {
               dangerouslySetInnerHTML={{ __html: blogData.content }}
             />
           </div>
-          <h5 className="text-[22px] font-bold leading-[1.6] text-[#858584] font-secondaryFont">
-            {t("blogDetails")}
-          </h5>
-          <div className="pb-[30px]">
-            <div className="flex items-center gap-[10px] py-[10px]">
-              <i>
-                <img src={blogIcon} alt="icon" />
-              </i>
-              <p className="text-[22px] leading-[1.6]">{t("blogDetails1")}</p>
+          {blogData.details && blogData.details.length > 0 && (
+            <div className="mb-4">
+              <h5 className="text-[22px] font-bold leading-[1.6] text-[#858584] font-secondaryFont pb-[20px]">
+              {t("blogDetails")}
+              </h5>
+              <ul className="space-y-3">
+                {blogData.details.map((detail, index) => (
+                  <li key={index} className="flex items-center">
+                    <i className="mr-2">
+                      <img src={blogIcon} alt="icon" />
+                    </i>
+                    <a 
+                      href={detail.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-[22px] leading-[1.6] text-[#fff]"
+                    >
+                      {detail.key}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <div className="flex items-center gap-[10px]">
-              <i>
-                <img src={blogIcon} alt="icon" />
-              </i>
-              <p className="text-[22px] leading-[1.6]">{t("blogDetails2")}</p>
-            </div>
-          </div>
+          )}
           {blogData.tags && blogData.tags.length > 0 && (
             <>
               <h5 className="text-[22px] font-semibold leading-[1.4] text-[#858584] font-secondaryFont pb-[20px]">

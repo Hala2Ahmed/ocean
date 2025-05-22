@@ -20,6 +20,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Loading from "../../components/Loading/Loading";
 import { useHomeData } from "../../CustomHook/HomeSocialLink";
+import OrganizationStructuredData from "../../components/OrganizationStructured/OrganizationStructuredData";
+import WebSiteStructuredData from "../../components/OrganizationStructured/WebSiteStructuredData";
 
 export default function Home() {
   const { t, i18n } = useTranslation();
@@ -65,6 +67,7 @@ export default function Home() {
     recent_services = [],
     process_steps = [],
     latest_blogs = [],
+    seo_settings=[],
   } = data?.data || {};
 
   const formatTextWithColoredLastWord = (text) => {
@@ -84,8 +87,14 @@ export default function Home() {
   };
   return (
     <>
-      <title>{t("navbarlink1")}</title>
-      <meta name="description" content={t("aboutDesc")} />
+     <title>{seo_settings.title}</title>
+     <meta name="description" content={seo_settings.description} />
+     <OrganizationStructuredData
+  generalSettings={data.data.general_settings}
+  homeSettings={data.data.home_settings}
+  seoSettings={data.data.seo_settings}
+/>
+<WebSiteStructuredData />
       {/* Hero Section */}
       <div className="text-[#ffffff] bg-primary overflow-hidden pt-[150px]">
         <div className="px-7 md:px-[85px] pb-[77px] lg:px-[70px]  max-w-screen-xl mx-auto pt-[50px] grid grid-cols-1 lg:grid-cols-2 gap-8 justify-center items-center">

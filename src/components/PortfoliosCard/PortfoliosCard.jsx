@@ -1,33 +1,65 @@
 import React, { useState } from "react";
-
 const MediaCard = ({ media }) => {
+  const getVideoType = (url) => {
+    const extension = url.split(".").pop().split(/#|\?/)[0].toLowerCase();
+    switch (extension) {
+      case "mp4":
+        return "video/mp4";
+      case "webm":
+        return "video/webm";
+      case "ogg":
+      case "ogv":
+        return "video/ogg";
+      case "mov":
+        return "video/quicktime";
+      case "avi":
+        return "video/x-msvideo";
+      default:
+        return "video/mp4";
+    }
+  };
   return (
     <div className="flex rounded-lg flex-col h-full">
       {media.type === "video" ? (
-        <div className="relative pt-[56.25%] rounded-xl overflow-hidden"> {/* 16:9 aspect ratio */}
+        media.image.includes("youtube.com") ||
+        media.image.includes("youtu.be") ? (
+          <div className="relative pt-[56.25%]"> {/* نسبة 16:9 */}
           <iframe
-            src={media.image}
-            className="absolute top-0 left-0 w-full h-[382px] "
-            allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture"
+            src={media.image.includes('watch?v=') ? 
+                 media.image.replace('watch?v=', 'embed/') : 
+                 media.image.replace('youtu.be', 'youtube.com/embed')}
+            className="absolute top-0 left-0 w-full h-full"
+            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
             title="Portfolio video"
           />
         </div>
       ) : (
-        <img 
-          src={media.image} 
-          alt="Portfolio" 
-          className="w-full h-[382px] object-cover rounded-xl" 
+        <div className="relative">
+          <video 
+            controls 
+            className="w-full h-auto max-h-[382px]"
+            style={{ aspectRatio: '16/9' }}
+          >
+            <source src={media.image} type={getVideoType(media.image)} />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        )
+      ) : (
+        <img
+          src={media.image}
+          alt="Portfolio"
+          className="w-full h-[382px] object-cover rounded-xl"
         />
       )}
     </div>
   );
 };
-
-export default function GenericPortfolioCard({ 
+export default function GenericPortfolioCard({
   data,
   servicesKey = "services",
-  itemsToShow = 6
+  // itemsToShow = 6
 }) {
   const [activeCategory, setActiveCategory] = useState(0);
 
@@ -37,7 +69,7 @@ export default function GenericPortfolioCard({
 
   const categories = data[servicesKey];
   const activeCategoryData = categories[activeCategory];
-  const worksToShow = activeCategoryData?.works?.slice(0, itemsToShow) || [];
+  const worksToShow = activeCategoryData?.works;
 
   return (
     <div className="flex flex-col items-center justify-center">

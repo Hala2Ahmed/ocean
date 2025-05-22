@@ -28,7 +28,6 @@ export default function Contact() {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["contactData", i18n.language],
     queryFn: () => fetchContactData(i18n.language === "ar" ? "ar" : "en"),
-    // staleTime: 5 * 60 * 1000, // 5 minutes cache
   });
   // console.log(data);
 
@@ -60,6 +59,9 @@ export default function Contact() {
           timer: 3000,
           timerProgressBar: true,
           showConfirmButton: false,
+          iconColor: '#3500fc',
+          background: '#262626',
+          color: '#fff'
         });
         resetForm();
       })
@@ -103,8 +105,8 @@ export default function Contact() {
 
   return (
     <>
-     <title>{t("navbarButton")}</title>
-     <meta name="description" content={t("aboutDesc")} />
+      <title>{data?.data?.seo_settings.title}</title>
+      <meta name="description" content={data?.data?.seo_settings.description} />
     <div className="bg-secondBackground text-white overflow-hidden lg:pt-[130px] pt-[200px]">
       <div className="text-center lg:pt-[116px] pt-[36px]">
         <span className="text-[51px] font-semibold leading-[1.1]">

@@ -65,14 +65,14 @@ export default function HowItWork() {
 
   return (
     <>
-     <title>{t("navbarlink5")}</title>
-     <meta name="description" content={t("aboutDesc")} />
+   <title>{data?.data?.seo_settings.title}</title>
+   <meta name="description" content={data?.data?.seo_settings.description} />
     <div className="bg-secondBackground text-white overflow-hidden lg:pt-[130px] pt-[200px]">
       <div className="text-center lg:pt-[116px] pt-[36px] px-[20px]">
         <span className="text-[#00fcdb] text-sm md:text-base font-semibold">
           {t("howItWorks")}
         </span>
-        <h2 className="text-white lg:text-[36px] max-w-[507px] text-[25px] md:text-5xl font-bold leading-tight tracking-tight mx-auto pt-[4px] pb-[44px] lg:pb-[96px]">
+        <h2 className="text-white lg:text-[36px] max-w-[507px] text-[25px] font-bold leading-tight tracking-tight mx-auto pt-[4px] pb-[44px] lg:pb-[96px]">
         {getSettingValue(`how_we_work_title_${i18n.language}`) || getSettingValue("how_we_work_title_en")}
         </h2>
       </div>

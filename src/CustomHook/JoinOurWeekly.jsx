@@ -25,6 +25,9 @@ export default function useNewsletterForm() {
           timer: 3000,
           timerProgressBar: true,
           showConfirmButton: false,
+          iconColor: '#3500fc',
+          background: '#262626',
+          color: '#fff'
         });
         resetForm();
       })

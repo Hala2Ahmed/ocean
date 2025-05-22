@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PreFooter from "../../components/PreFooter/PreFooter";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
@@ -30,10 +30,17 @@ async function fetchBlogData(lang, page = 1, size = 6, tagTitle = null) {
 
 export default function Blogs() {
   const { t, i18n } = useTranslation();
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 6;
+  
   const { data, isLoading, isError } = useQuery({
-    queryKey: ['blogData', i18n.language],
-    queryFn: () => fetchBlogData(i18n.language === 'ar' ? 'ar' : 'en'),
+    queryKey: ['blogData', i18n.language, currentPage],
+    queryFn: () => fetchBlogData(i18n.language === 'ar' ? 'ar' : 'en', currentPage, pageSize),
   });
+
+  const handleLoadMore = () => {
+    setCurrentPage(prev => prev + 1);
+  };
 
   if (isLoading) {
     return <Loading />;
@@ -49,11 +56,14 @@ export default function Blogs() {
 
   const blogData = data.data?.blog_settings;
   const relatedBlogs = [...(data.data?.blogs || [])].reverse();
+  const totalItems = data.data?.total_blogs || 0;
+  const showLoadMoreButton = currentPage * pageSize < totalItems;
+
   return (
     <>
-     <title>{t("navbarlink6")}</title>
-     <meta name="description" content={t("aboutDesc")} />
-      <div className="bg-secondBackground text-[#ffffff] overflow-hidden lg:pt-[130px] pt-[200px]">
+       <title>{data?.data?.seo_settings.title}</title>
+       <meta name="description" content={data?.data?.seo_settings.description} />
+      <div className="bg-secondBackground text-[#ffffff] overflow-hidden pt-[130px]">
         <div className="text-center lg:pt-[116px] pt-[36px]">
           <span className="text-[#00fcdb] text-sm md:text-base font-semibold">
             {t("service")}
@@ -73,15 +83,16 @@ export default function Blogs() {
                 <Link to={`/blog-details/${card.id}`}>
                   <img
                     src={card.image}
-                    className="w-full rounded-[5px]"
+                    className="w-full h-[205px] object-cover rounded-[5px]"
                     alt="blog"
+                    loading="lazy"
                   />
                   <div>
                     <div className="pt-[33px]">
-                      <h3 className="text-[20px] font-bold leading-[1.7]">
+                      <h3 className="text-[20px] font-bold leading-[1.7] line-clamp-2">
                         {card.title}
                       </h3>
-                      <p className="m-[18.2px_0_30.4px] leading-[1.89] text-[#ffffff99] text-[18px] font-medium">
+                      <p className="m-[18.2px_0_30.4px] leading-[1.89] text-[#ffffff99] text-[18px] font-medium line-clamp-2">
                         {card.description}
                       </p>
                       <div className="flex gap-3 items-center mb-[38.6px]">
@@ -102,11 +113,17 @@ export default function Blogs() {
               </div>
             ))}
           </div>
-          <div className="flex justify-center mt-[99.5px] pb-[51px] w-full">
-            <button className="font-semibold bg-[#ffffff19] p-[15px_75.4px_20.2px_55px] cursor-pointer">
-              {t("serviceButton")}
-            </button>
-          </div>
+          
+          {showLoadMoreButton && (
+            <div className="flex justify-center mt-[99.5px] pb-[51px] w-full">
+              <button 
+                onClick={handleLoadMore}
+                className="font-semibold bg-[#ffffff19] p-[15px_75.4px_20.2px_55px] cursor-pointer"
+              >
+                {t("serviceButton")}
+              </button>
+            </div>
+          )}
         </div>
       </div>
       <PreFooter />

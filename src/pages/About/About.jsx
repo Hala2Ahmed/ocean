@@ -22,7 +22,6 @@ export default function About() {
   const { data, isLoading, isError } = useQuery({
     queryKey: ['aboutData', i18n.language],
     queryFn: () => fetchAboutData(i18n.language === 'ar' ? 'ar' : 'en'),
-    // staleTime: 5 * 60 * 1000, // 5 minutes cache
   });
 // console.log(data);
 
@@ -38,7 +37,7 @@ export default function About() {
   </div>;
   }
 
-  const { about_settings, members } = data.data;
+  const { about_settings, members, seo_settings } = data.data;
   const sortedMembers = [...members].sort((a, b) => a.id - b.id);
 
   const getSetting = (key) => {
@@ -48,8 +47,8 @@ export default function About() {
 
   return (
     <>
-     <title>{t("navbarlink4")}</title>
-     <meta name="description" content={t("aboutDesc")} />
+     <title>{seo_settings.title}</title>
+     <meta name="description" content={seo_settings.description} />
     <div className="bg-secondBackground text-white overflow-hidden lg:pt-[130px] pt-[200px]">
       <div className="flex items-center max-w-screen-xl mx-auto lg:flex-row flex-col lg:pt-[142px] lg:pb-[181px] pt-[36px] pb-[36px] lg:px-[140px] px-[36px] gap-4">
         <div className="relative">
