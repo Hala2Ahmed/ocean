@@ -5,6 +5,7 @@ import Footer from "../components/Footer/Footer";
 import WhatsAppContact from "../components/WhatsAppContact/WhatsAppContact";
 import ScrollToTopArrow from "../components/ScrollToTopArrow/ScrollToTopArrow";
 import Scrollup from "../components/Scrollup/Scrollup";
+import PdfDownloadButton from "../components/WhatsAppContact/PdfDownloadButton";
 
 export default function Layout() {
   return (
@@ -12,6 +13,7 @@ export default function Layout() {
       <Navbar />
       <Outlet />
       <WhatsAppContact />
+      <PdfDownloadButton />
       <ScrollToTopArrow />
       <Scrollup />
       <Footer />

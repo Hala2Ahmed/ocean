@@ -83,7 +83,7 @@ export default function Blogs() {
                 <Link to={`/blog-details/${card.id}`}>
                   <img
                     src={card.image}
-                    className="w-full h-[205px] object-cover rounded-[5px]"
+                    className="w-full h-[243px] object-cover rounded-[5px]"
                     alt="blog"
                     loading="lazy"
                   />
