@@ -5,11 +5,14 @@ import logo from "../../assets/RocketLaunch.svg";
 import heroGif from "../../assets/fc35451534249e6850f9fb9dd3edb206.gif";
 import aboutImg1 from "../../assets/arabout.png";
 import aboutImg2 from "../../assets/enabout.png";
-import scroll1 from "../../assets/scroll1.png";
-import scroll2 from "../../assets/scroll2.png";
-import scroll3 from "../../assets/scroll3.png";
-import scroll4 from "../../assets/scroll4.png";
-import scroll5 from "../../assets/scroll5.png";
+import scroll1 from "../../assets/1.png";
+import scroll2 from "../../assets/2.png";
+import scroll3 from "../../assets/3.png";
+import scroll4 from "../../assets/4.png";
+import scroll5 from "../../assets/5.png";
+import scroll6 from "../../assets/6.png";
+import scroll7 from "../../assets/7.png";
+import scroll8 from "../../assets/8.png";
 import ServicesCard from "../../components/ServicesCard/ServicesCard";
 import PortfoliosCard from "../../components/PortfoliosCard/PortfoliosCard";
 import HowItWorkCard from "../../components/HowItWorkCard/HowItWorkCard";
@@ -363,7 +366,7 @@ export default function Home() {
                   ref={logosRef}
                   className="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll whitespace-nowrap"
                 >
-                  {[scroll1, scroll2, scroll3, scroll4, scroll5].map(
+                  {[scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8].map(
                     (logo, index) => (
                       <li key={index} className="inline-block">
                         <img src={logo} alt="logo" className="h-10 md:h-12" />
@@ -371,7 +374,7 @@ export default function Home() {
                     )
                   )}
                   {/* Duplicate for seamless looping */}
-                  {[scroll1, scroll2, scroll3, scroll4, scroll5].map(
+                  {[scroll1, scroll2, scroll3, scroll4, scroll5, scroll6, scroll7, scroll8].map(
                     (logo, index) => (
                       <li key={`dup-${index}`} className="inline-block">
                         <img src={logo} alt="logo" className="h-10 md:h-12" />

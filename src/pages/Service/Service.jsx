@@ -64,7 +64,7 @@ export default function Blogs() {
        <title>{data?.data?.seo_settings.title}</title>
        <meta name="description" content={data?.data?.seo_settings.description} />
       <div className="bg-secondBackground text-[#ffffff] overflow-hidden pt-[130px]">
-        <div className="text-center lg:pt-[116px] pt-[36px]">
+        <div className="text-center lg:pt-[116px] sm:pt-[36px] md:pt-[36px] pt-[70px]">
           <span className="text-[#00fcdb] text-sm md:text-base font-semibold">
             {t("service")}
           </span>

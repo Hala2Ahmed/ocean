@@ -50,7 +50,7 @@ export default function PdfDownloadButton() {
   };
 
   return (
-    <div className={`fixed bottom-[28%] z-50 ${isArabic ? "left-8" : "right-8"}`}>
+    <div className={`fixed bottom-[28.5%] z-50 ${isArabic ? "left-8" : "right-8"}`}>
       <div className="relative group">
         <a
           href={data.pdfUrl}
@@ -60,6 +60,10 @@ export default function PdfDownloadButton() {
           className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white shadow-lg"
           aria-label={t('download')}
         >
+             <div
+        className="absolute z-10 top-0 left-0 w-full h-full rounded-full bg-white animate-ping"
+        style={{ animation: "ping-small 2s infinite" }}
+      />
           <div className="relative z-20 w-10 h-10 overflow-hidden rounded-md">
             <img 
               src={pdfIcon} 
